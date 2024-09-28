@@ -28,7 +28,6 @@ const NavBar = () => {
     { menuTitle: "Home", pageURL: "/Home" },
     { menuTitle: "About", pageURL: "/About" },
     { menuTitle: "Contact", pageURL: "/Contact" },
-    { menuTitle: "Dummy", pageURL: "/Dummy" },
   ];
 
   return (
@@ -39,6 +38,11 @@ const NavBar = () => {
       >
         <Toolbar style={{ justifyContent: "space-between" }}>
           <div className="navTitle">
+            <img
+              src="/public/logo.png"
+              style={{ maxHeight: 60, maxWidth: 60 }}
+              alt="Logo"
+            />
             <Link
               to="/home"
               style={{
@@ -48,7 +52,7 @@ const NavBar = () => {
                 fontWeight: "BOLD",
               }}
             >
-              Learnify
+              BENKYO
             </Link>
             <div style={{ textDecoration: "none", marginLeft: "10px" }}></div>
           </div>

@@ -1,16 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { getMetaData } from "../../services/dummy-service.jsx";
-import {
-  Container,
-  List,
-  ListItem,
-  ListItemText,
-  Button,
-  TextField,
-  CircularProgress,
-  Typography,
-} from "@mui/material";
+import { Button } from "@mui/material";
 
 async function getReq(query) {
   let rep = await getMetaData(query);
@@ -26,7 +17,8 @@ const DummyPage = () => {
   return (
     <>
       <div style={{ backgroundColor: "red" }}>
-        <Button onClick={() => fetchData()}>click for req</Button>
+        <Button> test</Button>
+        {/* <Button onClick={() => fetchData()}>click for req</Button> */}
       </div>
     </>
   );
