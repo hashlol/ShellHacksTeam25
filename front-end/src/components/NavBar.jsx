@@ -58,8 +58,16 @@ const NavBar = () => {
                 component={NavLink}
                 to={menuItem.pageURL}
                 style={({ isActive }) => ({
-                  color: "#4143E3",
-                  fontWeight: 550,
+                  color:
+                    isActive ||
+                    (menuItem.menuTitle === "Home" && location.pathname === "/")
+                      ? "#FE7163"
+                      : "#4143E3",
+                  fontWeight:
+                    isActive ||
+                    (menuItem.menuTitle === "Home" && location.pathname === "/")
+                      ? 600
+                      : 500,
                   transform:
                     isActive ||
                     (menuItem.menuTitle === "Home" && location.pathname === "/")
@@ -68,7 +76,7 @@ const NavBar = () => {
                   borderBottom:
                     isActive ||
                     (menuItem.menuTitle === "Home" && location.pathname === "/")
-                      ? "4px solid #4143E3"
+                      ? "4px solid #FE7163"
                       : null,
                   borderRadius:
                     isActive ||

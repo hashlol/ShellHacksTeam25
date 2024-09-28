@@ -74,10 +74,10 @@ const HomePage = () => {
             </Typography>
           </Box>
           <img
-            src="/homepageimage2.png"
+            src="/homepageimage5.png"
             style={{
               maxHeight: "500px",
-              maxWidth: "400px",
+              maxWidth: "650px",
               transform: "translateX(20%)",
             }}
           />
