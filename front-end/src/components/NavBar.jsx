@@ -2,13 +2,9 @@ import React, { useState } from "react";
 import { useLocation, Link, NavLink } from "react-router-dom";
 import AppBar from "@mui/material/AppBar"; // Material UI core components are in @mui/material
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu"; // Icons are in @mui/icons-material
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import Button from "@mui/material/Button";
-import useMediaQuery from "@mui/material/useMediaQuery"; // useMediaQuery remains in @mui/material
-import { useTheme } from "@mui/styles"; // useTheme remains from MUI
 import "./components.css";
 
 /**
@@ -18,7 +14,6 @@ import "./components.css";
  */
 const NavBar = () => {
   const location = useLocation();
-  const theme = useTheme();
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleMenu = (event) => {
@@ -39,14 +34,21 @@ const NavBar = () => {
     <div style={{ width: "100%" }}>
       <AppBar
         position="absolute"
-        style={{ backgroundColor: "white", width: "100%", boxShadow: 0 }}
+        style={{ backgroundColor: "#f5f5f5", width: "100%", boxShadow: 0 }}
       >
         <Toolbar style={{ justifyContent: "space-between" }}>
           <div className="navTitle">
             <Link
               to="/home"
-              style={{ textDecoration: "none", color: "inherit" }}
-            ></Link>
+              style={{
+                textDecoration: "none",
+                color: "#4143E3",
+                fontSize: "30px",
+                fontWeight: "BOLD",
+              }}
+            >
+              Learnify
+            </Link>
             <div style={{ textDecoration: "none", marginLeft: "10px" }}></div>
           </div>
           <div className="headerOptions">
@@ -56,19 +58,23 @@ const NavBar = () => {
                 component={NavLink}
                 to={menuItem.pageURL}
                 style={({ isActive }) => ({
-                  backgroundColor:
+                  color: "#4143E3",
+                  fontWeight: 550,
+                  transform:
                     isActive ||
                     (menuItem.menuTitle === "Home" && location.pathname === "/")
-                      ? "#91C8E4"
-                      : "#F6F4EB",
-                  borderRadius: 50,
-                  border: 10,
-                  color:
+                      ? "scale(1.005)"
+                      : "scale(0.9)",
+                  borderBottom:
                     isActive ||
                     (menuItem.menuTitle === "Home" && location.pathname === "/")
-                      ? "#F6F4EB"
-                      : "#91C8E4",
-                  outline: "1px",
+                      ? "4px solid #4143E3"
+                      : null,
+                  borderRadius:
+                    isActive ||
+                    (menuItem.menuTitle === "Home" && location.pathname === "/")
+                      ? "0 0 8px 8px"
+                      : null,
                   fontSize: "25px",
                   marginRight: "20px",
                   paddingLeft: "10px",

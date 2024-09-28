@@ -1,67 +1,87 @@
 import React from "react";
-import BasicTextFields from "../../components/BasicTextFields";
-import BasicButtons from "../../components/BasicButtons";
-import HomePageImage from "../../components/HomePageImage";
+import SignUpForm from "../../components/SignUpForm";
+import SignInForm from "../../components/SignInForm";
+import { Grid2, Box, Typography, Paper } from "@mui/material";
+
+import "./HomePage.css";
 
 const HomePage = () => {
-  return (
-    <div style={{ display: "flex", height: "100vh" }}>
-      {/* Left Side: Image and Text */}
-      <div
-        style={{
-          flex: 1,
-          backgroundColor: "#f5f5f5",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-          height: "100%",
-        }}
-      >
-        <HomePageImage />
-      </div>
+  const handleButtonClick = () => {
+    console.log("submitted form");
+  };
 
-      {/* Right Side: Login Form */}
-      <div
-        style={{
-          flex: 1,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          textAlign: "center",
+  return (
+    <Grid2
+      container
+      component="main"
+      sx={{ height: "100vh", backgroundColor: "#f5f5f5" }}
+    >
+      <Grid2
+        item
+        xs={12}
+        md={6}
+        sx={{
+          backgroundSize: "cover",
+          backgroundPosition: "top",
         }}
       >
-        <div
+        <Box
           style={{
-            border: "2px solid #f5f5f5",
-            backgroundColor: "#f9f9f9",
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-            padding: "20px",
-            borderRadius: "10px",
-            alignItems: "center",
+            display: "flex",
+            flexDirection: "column",
+            transform: "translateY(35%)",
           }}
         >
-          <h1 style={{ color: "#333", fontSize: "40px" }}>Login</h1>
-          <BasicTextFields
-            id="usernameForm"
-            label="Username"
-            variant="outlined"
-            style={{ marginBottom: "15px", width: "100%" }}
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              height: "100%",
+              color: "white",
+              backgroundColor: "#",
+              padding: 4,
+            }}
+          >
+            <Typography
+              variant="h2"
+              component="h2"
+              gutterBottom
+              sx={{
+                fontWeight: "600",
+                color: "#4042E3",
+                transform: "translateY(30%)",
+              }}
+            >
+              Welcome to Learnify!
+            </Typography>
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: "500",
+                color: "#4042E3",
+                maxWidth: "900px",
+                marginLeft: "10px",
+              }}
+            >
+              Discover and memorize anything using spaced repetition and improve
+              your knowledge retention!
+            </Typography>
+          </Box>
+          <img
+            src="/homepageimage2.png"
+            style={{
+              maxHeight: "500px",
+              maxWidth: "400px",
+              transform: "translateX(20%)",
+            }}
           />
-          <BasicTextFields
-            id="passwordForm"
-            label="Password"
-            variant="outlined"
-            style={{ marginBottom: "15px", width: "100%" }}
-          />
-          <BasicButtons
-            text="Login"
-            style={{ width: "100%", backgroundColor: "#4CAF50", color: "#fff" }}
-          />
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Grid2>
+      {/* <SignUpForm onClick={handleButtonClick} /> */}
+      <SignInForm />
+    </Grid2>
   );
 };
 
