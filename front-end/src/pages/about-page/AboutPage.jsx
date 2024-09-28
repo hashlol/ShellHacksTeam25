@@ -7,7 +7,7 @@ const AboutPage = () => {
     <>
       <Container
         maxWidth="lg"
-        style={{ paddingTop: "20px", backgroundColor: "#f5f5f5" }}
+        style={{ paddingTop: "30px", backgroundColor: "#f5f5f5" }}
       >
         <Box
           sx={{
