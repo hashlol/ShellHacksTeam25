@@ -14,7 +14,11 @@ const HomePage = () => {
     <Grid2
       container
       component="main"
-      sx={{ height: "100vh", backgroundColor: "#f5f5f5" }}
+      sx={{
+        height: "100vh",
+        backgroundColor: "#f5f5f5",
+        transform: "scale(0.8)",
+      }}
     >
       <Grid2
         item
@@ -40,7 +44,7 @@ const HomePage = () => {
               justifyContent: "center",
               height: "100%",
               color: "white",
-              backgroundColor: "#",
+              backgroundColor: "#f5f5f5",
               padding: 4,
             }}
           >
