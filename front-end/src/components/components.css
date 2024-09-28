@@ -1,0 +1,35 @@
+/* components.css */
+
+.menuButton {
+  margin-right: 16px; /* theme.spacing(2) is equivalent to 16px */
+}
+
+.headerOptions {
+  display: flex;
+  justify-content: flex-end;
+  transform: scale(0.8) translateX(10%);
+}
+
+.navTitle {
+  display: flex;
+  align-items: center;
+}
+
+.navTitle {
+  display: flex;
+  align-items: center;
+}
+.navTitleText,
+.navTitle2Text {
+  white-space: nowrap;
+}
+
+.navBarActiveButton {
+  background-color: "#91C8E4 !important";
+  border-radius: "50px";
+  color: "#F6F4EB !important";
+}
+
+.MuiPaper-root.MuiAppBar-root {
+  box-shadow: none !important;
+}
