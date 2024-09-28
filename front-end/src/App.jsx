@@ -6,16 +6,11 @@ import AboutPage from "./pages/about-page/AboutPage";
 import ErrorPage from "./pages/error-page/ErrorPage";
 import DummyPage from "./pages/dummy-page/DummyPage";
 import ContactPage from "./pages/contact-page/ContactPage";
-import { Auth0Provider } from "@auth0/auth0-react";
+
 
 function App() {
   return (
     <>
-      <Auth0Provider
-        domain="{YOUR_DOMAIN}"
-        clientId="{YOUR_CLIENT_ID}"
-        redirectUri={window.location.origin}
-      >
         <BrowserRouter>
           <NavBar />
           <Routes>
@@ -26,7 +21,6 @@ function App() {
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </BrowserRouter>
-      </Auth0Provider>
     </>
   );
 }
