@@ -42,6 +42,7 @@ const SignUpForm = ({ onClick }) => {
           width: "350px",
           height: "400px",
           borderRadius: "10px",
+          color: "#f5f5f5",
         }}
       >
         <Typography
