@@ -5,30 +5,21 @@ import ImageGrid from "../../components/ImageGrid";
 const AboutPage = () => {
   return (
     <>
-      <div>
-        <ImageGrid />
-      </div>
-      <Container maxWidth="md" style={{ paddingTop: "60px" }}>
+      <Container
+        maxWidth="lg"
+        style={{ paddingTop: "20px", backgroundColor: "#f5f5f5" }}
+      >
         <Box
           sx={{
             padding: 3,
-            backgroundColor: "#f9f9f9",
+            backgroundColor: "#f5f5f5",
             borderRadius: "8px",
             boxShadow: 2,
             margin: "30px",
+            transform: "translateY(1%)",
           }}
         >
-          <Typography variant="h4" component="h1" gutterBottom>
-            Welcome to Learnify!
-          </Typography>
-          <Typography variant="body1" color="textSecondary">
-            Our mission is to empower underprivileged communities and people
-            with disabilities by providing accessible, personalized learning in
-            any language. Learnify highlights key concepts, making it easier to
-            grasp important ideas. Through spaced repetition, we reinforce
-            knowledge retention, ensuring long-term understanding and empowering
-            everyone to learn and grow. Let's begin!
-          </Typography>
+          <ImageGrid />
         </Box>
       </Container>
     </>

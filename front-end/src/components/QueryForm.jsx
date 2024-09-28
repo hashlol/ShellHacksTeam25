@@ -10,7 +10,7 @@ const QueryForm = () => {
       <div
         style={{
           border: "2px solid #000",
-          backgroundColor: "#f9f9f9",
+          backgroundColor: "#f5f5f5",
           borderRadius: "8px",
           padding: "20px",
           boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",

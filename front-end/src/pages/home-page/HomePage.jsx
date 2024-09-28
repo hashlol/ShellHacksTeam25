@@ -33,7 +33,7 @@ const HomePage = () => {
           style={{
             display: "flex",
             flexDirection: "column",
-            transform: "translateY(35%)",
+            transform: "translateY(15%)",
           }}
         >
           <Box
