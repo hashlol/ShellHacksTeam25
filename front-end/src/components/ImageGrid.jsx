@@ -22,6 +22,22 @@ const gridData = [
 const ImageGrid = () => {
   return (
     <>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        {" "}
+        <Typography
+          variant="h2"
+          gutterBottom
+          style={{ color: "#4143E3", fontWeight: "bold", fontSize: "70px" }}
+        >
+          Why we do what we do
+        </Typography>
+      </div>
       <Grid2
         style={{
           display: "flex",
@@ -37,7 +53,6 @@ const ImageGrid = () => {
               flexDirection: "row",
               backgroundColor: "#f5f5f5",
               transform: "scale(0.8)",
-              marginTop: "30px",
             }}
           >
             <img

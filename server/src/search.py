@@ -94,7 +94,7 @@ class TranscriptProcessor:
 class OpenAIChat:
     def __init__(self, api_key):
         self.api_key = api_key
-        openai.api_key = "sk-P-EbMoJJya9WUW9g4nhqXIJqgcTYf4vGafVZyWpuvkT3BlbkFJj3nErDunQszFVx5Gw5ymHWgdSOVl-LeBeU7bcgu_cA"
+        openai.api_key = ""
         self.conversation_history = []
 
     def chat_with_openai(self, user_input):
@@ -114,7 +114,7 @@ cors = CORS(app, origins=['*'])
 
 @app.route('/getMetaData/<query>', methods=['GET'])
 def getMetadata(query):
-    youtube_api_key = "AIzaSyA7cxyNkxnmK7kEmz81mGT87VPUTkAY25U"
+    youtube_api_key = ""
     query = query
     
     # Step 1: Search for YouTube video

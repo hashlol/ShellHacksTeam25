@@ -10,11 +10,12 @@ import { Link } from "react-router-dom";
 import MailIcon from "@mui/icons-material/Mail";
 import LockIcon from "@mui/icons-material/Lock";
 import GoogleLogo from "./GoogleLogo";
+import  {useAuth0 } from '@auth0/auth0-react';  
 
 const SignInForm = ({ onClick }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const { loginWithRedirect, isAuthenticated } = useAuth0();
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const handleSubmit = () => {
@@ -145,9 +146,9 @@ const SignInForm = ({ onClick }) => {
           </Link>
         </Typography>
 
-        {/* Google Sign Up Button */}
+        {/* Google Sign in Button */}
         <Button
-          onClick={null}
+          onClick={() => loginWithRedirect()}
           sx={{
             backgroundColor: "transparent",
             color: "#909090",
