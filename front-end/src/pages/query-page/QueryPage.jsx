@@ -6,18 +6,30 @@ import {
   Box,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import QueryInput from "../../components/query/QueryInput";
 import { getMetaData } from "../../services/query-service";
 import QueryVideoPlayer from "../../components/query/QueryVideoPlayer";
 import QueryFlashCard from "../../components/query/QueryFlashCard";
 import QueryQuestion from "../../components/query/QueryQuestion";
+import { useGlobalState } from "../../GlobalStateContext.jsx";
+import { useNavigate } from 'react-router-dom'; // Correct import for navigation
+
 
 const QueryPage = () => {
   const [query, setQuery] = useState("");
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const { isToggled } = useGlobalState(); // Access the global state 
+  const navigate = useNavigate(); // For redirect
+
+    // Redirect to home if isToggled is false
+    useEffect(() => {
+      if (!isToggled) {
+        navigate("/home"); // Redirect to home
+      }
+    }, [isToggled, navigate]); // Dependency array
 
   const handleFetchData = async () => {
     setLoading(true);
