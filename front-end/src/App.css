@@ -3,17 +3,22 @@ body {
 }
 
 element.style {
---Paper-shadow: 1px 3px 2px -2px rgba(0, 0, 0, 0.2), 1px 2px 2px 1px rgba(0, 0, 0, 0.14), 1px 2px 4px 1px rgba(0, 0, 0, 0.12);
+--Paper-shadow: 0px 3px 2px 0px rgba(0, 0, 0, 0.2), 
+0px 2px 2px 1px rgba(0, 0, 0, 0.14), 
+0px 2px 4px 1px rgba(0, 0, 0, 0.12) 
+ !important;
 }
 
-.fade-in-left {
+.fade-in-section {
   opacity: 0;
-  transform: translateX(-50px); /* Move 50px to the left */
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Transition for smooth movement */
+  transform: translateY(20vh);
+  visibility: hidden;
+  transition: opacity 0.6s ease-out, transform 1.2s ease-out;
+  will-change: opacity, visibility;
+}
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
 }
 
-/* When the element is in view, apply these styles */
-.fade-in-left.show {
-  opacity: 1;
-  transform: translateX(0); /* Element moves back to its original position */
-}

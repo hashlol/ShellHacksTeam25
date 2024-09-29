@@ -78,7 +78,7 @@ const ImageGrid = () => {
           gutterBottom
           style={{ color: "#4143E3", fontWeight: "bold", fontSize: "70px" }}
         >
-          What Benkyo does
+          What does Benkyo do?
         </Typography>
       </div>
       <Grid2
