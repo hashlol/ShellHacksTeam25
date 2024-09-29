@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import SignUpForm from "../../components/SignUpForm";
 import SignInForm from "../../components/SignInForm";
 import { Grid2, Box, Typography } from "@mui/material";
+import { useAuth0 } from "@auth0/auth0-react";
+    
 import "./HomePage.css";
 
 const HomePage = () => {
   const [isSignIn, setSignIn] = useState(true);
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   const handleFormChange = () => {
     setSignIn((prev) => !prev); // Toggle between sign-in and sign-up forms
@@ -91,15 +94,25 @@ const HomePage = () => {
         xs={12}
         md={6}
         sx={{ transform: "scale(1.2) translateX(-10%)" }}
-      >
-        {isSignIn ? (
-          <SignInForm onFormChange={handleFormChange} />
-        ) : (
-          <SignUpForm onFormChange={handleFormChange} />
-        )}
-      </Grid2>
-    </Grid2>
-  );
+      ><div>
+      {!isAuthenticated ? (
+        <div>
+          {isSignIn ? (
+            <SignInForm onFormChange={handleFormChange} />
+          ) : (
+            <SignUpForm onFormChange={handleFormChange} />
+          )}
+          {/* OAuth Sign In */}
+        </div>
+      ) : (
+        <div>
+          <h2>Welcome, User!</h2>
+        </div>
+      )}
+    </div>
+  </Grid2>
+</Grid2>
+);
 };
 
 export default HomePage;
