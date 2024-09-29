@@ -6,9 +6,9 @@ const QuizStorageService = {
     let recommendedDate = new Date();
 
     if (isCorrect) {
-      recommendedDate.setDate(recommendedDate.getDate() + 7); // 7 days later for correct answers
+      recommendedDate.setDate(recommendedDate.getDate() + 1); // 7 days later for correct answers
     } else {
-      recommendedDate.setDate(recommendedDate.getDate() + 1); // 1 day later for incorrect answers
+      recommendedDate.setDate(recommendedDate.getDate() + 0); // 1 day later for incorrect answers
     }
 
     // Structure to save the full question and answer data
@@ -21,7 +21,6 @@ const QuizStorageService = {
       recommendedDate: recommendedDate.toISOString(),
     };
 
-    // Save the updated data in localStorage
     localStorage.setItem("quizData", JSON.stringify(storedData));
   },
 
