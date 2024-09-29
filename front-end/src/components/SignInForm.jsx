@@ -11,15 +11,14 @@ import LockIcon from "@mui/icons-material/Lock";
 import { useAuth0 } from "@auth0/auth0-react";
 import OAuthLogo from "./OAuthLogo";
 import { useGlobalState } from '../GlobalStateContext';
-
-
+import Alert from '@mui/material/Alert';
 
 const SignInForm = ({ onFormChange }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { loginWithRedirect, loginWithPopup } = useAuth0();
-  const { isToggled, setIsToggled } = useGlobalState(); // Access the global state
-
+  const { loginWithRedirect } = useAuth0();
+  const { setIsToggled } = useGlobalState(); // Access the global state
+  const [alert, setAlert] = useState({ open: false, message: "", severity: "" });
 
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
@@ -32,34 +31,35 @@ const SignInForm = ({ onFormChange }) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          grant_type: "password",           // The grant type is 'password' for username-password login
-          username: email,                  // The user's email or username
-          password: password,               // The user's password
-          client_id: "P6CgenKb7ii7mf7p8pHVR8BjUpzOwfl2",      // Client ID of your Auth0 application
-          connection: "Username-Password-Authentication", 
+          grant_type: "password",
+          username: email,
+          password: password,
+          client_id: "P6CgenKb7ii7mf7p8pHVR8BjUpzOwfl2",
+          connection: "Username-Password-Authentication",
         }),
       });
-  
+
       const data = await response.json();
-  
+
       if (response.ok) {
-        console.log("Attempting to set signIn2 to true");
-        setIsToggled(true)
-        console.log("Login successful!", data);
-        // Store the access token securely (e.g., in localStorage or session)
+        setIsToggled(true);
+        setAlert({ open: true, message: "Login successful!", severity: "success" });
         const accessToken = data.access_token;
         console.log("Access Token:", accessToken);
       } else {
-        console.error("Login failed:", data);
-        // Handle login failure (e.g., display an error message)
+        setAlert({ open: true, message: data.error_description || "Login failed", severity: "error" });
       }
     } catch (error) {
-      console.error("An error occurred during login:", error);
+      setAlert({ open: true, message: "An error occurred during login.", severity: "error" });
     } finally {
       // Clear fields if necessary
       setEmail("");
       setPassword("");
     }
+  };
+
+  const handleCloseAlert = () => {
+    setAlert({ ...alert, open: false });
   };
 
   return (
@@ -74,6 +74,13 @@ const SignInForm = ({ onFormChange }) => {
         borderRadius: "10px",
       }}
     >
+      {/* Alert */}
+      {alert.open && (
+        <Alert severity={alert.severity} onClose={handleCloseAlert} style={{ marginBottom: '20px' }}>
+          {alert.message}
+        </Alert>
+      )}
+
       <Typography
         variant="h4"
         style={{
@@ -167,7 +174,7 @@ const SignInForm = ({ onFormChange }) => {
       >
         Don't have an account?{" "}
         <Button
-          onClick={onFormChange} // Trigger form switch
+          onClick={onFormChange}
           sx={{
             fontSize: "13px",
             textDecoration: "none",
@@ -181,7 +188,7 @@ const SignInForm = ({ onFormChange }) => {
       </Typography>
 
       <Button
-        onClick={() => loginWithRedirect    ()}
+        onClick={() => loginWithRedirect()}
         sx={{
           backgroundColor: "transparent",
           color: "#909090",

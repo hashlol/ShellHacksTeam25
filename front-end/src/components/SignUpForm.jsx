@@ -11,17 +11,19 @@ import PersonIcon from "@mui/icons-material/Person";
 import LockIcon from "@mui/icons-material/Lock";
 import OAuthLogo from "./OAuthLogo";
 import { useAuth0 } from "@auth0/auth0-react";
-
+import Alert from '@mui/material/Alert';
 
 const SignUpForm = ({ onFormChange }) => {
   const [username, setUsername] = useState("");
   const { loginWithRedirect } = useAuth0();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [alert, setAlert] = useState({ open: false, message: "", severity: "" });
 
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
+
   const handleSubmit = async () => {
     try {
       const response = await fetch(
@@ -39,23 +41,29 @@ const SignUpForm = ({ onFormChange }) => {
           }),
         }
       );
-  
+
       const data = await response.json();
-  
+
       if (response.ok) {
         console.log("Sign up successful!", data);
+        setAlert({ open: true, message: "Sign up successful!", severity: "success" });
         // Optionally log the user in immediately or redirect
       } else {
         console.error("Sign up failed:", data);
-        // Handle signup failure
+        setAlert({ open: true, message: data.error || data.message ||"Sign up failed", severity: "error" });
       }
     } catch (error) {
-      console.error("An error occurred during sign up:", error);
+      setAlert({ open: true, message: "Sign up failed", severity: "error" });
     } finally {
       // Clear fields
       setEmail("");
       setPassword("");
+      setUsername("");
     }
+  };
+
+  const handleCloseAlert = () => {
+    setAlert({ ...alert, open: false });
   };
 
   return (
@@ -70,14 +78,19 @@ const SignUpForm = ({ onFormChange }) => {
         borderRadius: "10px",
       }}
     >
+      {/* Alert */}
+      {alert.open && (
+        <Alert severity={alert.severity} onClose={handleCloseAlert} style={{ marginBottom: '20px' }}>
+          {alert.message}
+        </Alert>
+      )}
+
       <Typography
         variant="h4"
         style={{
           marginTop: "10px",
           color: "#4042E3",
           fontWeight: "600",
-          textDecorationColor: "#4042E3",
-          textDecorationThickness: "2px",
         }}
       >
         Sign up
