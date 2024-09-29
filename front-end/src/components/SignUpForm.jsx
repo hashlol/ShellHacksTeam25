@@ -22,14 +22,40 @@ const SignUpForm = ({ onFormChange }) => {
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
-
-  const handleSubmit = () => {
-    console.log(username);
-    console.log(email);
-    console.log(password);
-    setUsername("");
-    setEmail("");
-    setPassword("");
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch(
+        `https://dev-1x3dgd17gm4ixr5o.us.auth0.com/dbconnections/signup`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            client_id: "P6CgenKb7ii7mf7p8pHVR8BjUpzOwfl2", // Client ID of your Auth0 application
+            email: email,
+            password: password,
+            connection: "Username-Password-Authentication", // Connection configured in Auth0
+          }),
+        }
+      );
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        console.log("Sign up successful!", data);
+        // Optionally log the user in immediately or redirect
+      } else {
+        console.error("Sign up failed:", data);
+        // Handle signup failure
+      }
+    } catch (error) {
+      console.error("An error occurred during sign up:", error);
+    } finally {
+      // Clear fields
+      setEmail("");
+      setPassword("");
+    }
   };
 
   return (
