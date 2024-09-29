@@ -45,7 +45,7 @@ const ContactPage = () => {
           src="/homepageimage3.png"
           alt="Left decorative image"
           sx={{
-            maxWidth: "300px",
+            maxWidth: "350px",
             height: "auto",
             display: { xs: "none", md: "block" },
           }}
@@ -62,6 +62,8 @@ const ContactPage = () => {
             padding: "20px",
             borderRadius: "10px",
             backgroundColor: "#f5f5f5",
+            boxShadow:
+              "0px 4px 2px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 2px 6px 0px rgba(0,0,0,0.12)",
           }}
         >
           <Typography
@@ -70,12 +72,11 @@ const ContactPage = () => {
               marginBottom: "20px",
               color: "#4042E3",
               fontWeight: "600",
-              textDecoration: "underline",
               textDecorationColor: "#4042E3",
               textDecorationThickness: "2px",
             }}
           >
-            Contact Us!
+            Contact Us
           </Typography>
 
           <TextField
@@ -135,7 +136,7 @@ const ContactPage = () => {
           src="/homepageimage1.png"
           alt="Right decorative image"
           sx={{
-            maxWidth: "300px",
+            maxWidth: "350px",
             height: "auto",
             display: { xs: "none", md: "block" },
           }}
