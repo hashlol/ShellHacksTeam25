@@ -10,9 +10,12 @@ import MailIcon from "@mui/icons-material/Mail";
 import PersonIcon from "@mui/icons-material/Person";
 import LockIcon from "@mui/icons-material/Lock";
 import OAuthLogo from "./OAuthLogo";
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 const SignUpForm = ({ onFormChange }) => {
   const [username, setUsername] = useState("");
+  const { loginWithRedirect } = useAuth0();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -168,7 +171,7 @@ const SignUpForm = ({ onFormChange }) => {
       </Typography>
 
       <Button
-        onClick={null}
+        onClick={() => loginWithRedirect()}
         sx={{
           backgroundColor: "transparent",
           color: "#909090",
