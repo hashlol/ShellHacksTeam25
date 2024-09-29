@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useLocation, Link, NavLink } from "react-router-dom";
-import AppBar from "@mui/material/AppBar"; // Material UI core components are in @mui/material
+import { useAuth0 } from "@auth0/auth0-react"; // Import Auth0 hook
+import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import Button from "@mui/material/Button";
+import LogoutIcon from '@mui/icons-material/Logout';  
 import "./components.css";
 
 /**
@@ -16,12 +18,18 @@ const NavBar = () => {
   const location = useLocation();
   const [anchorEl, setAnchorEl] = useState(null);
 
+  const { isAuthenticated, logout } = useAuth0(); // Destructure isAuthenticated and logout from Auth0
+
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    logout({ returnTo: window.location.origin }); // Use Auth0 logout function
   };
 
   const menuItems = [
@@ -97,6 +105,13 @@ const NavBar = () => {
                 {menuItem.menuTitle.toLocaleUpperCase()}
               </Button>
             ))}
+            {isAuthenticated && (
+            <Button
+              onClick={handleLogout}
+            >
+              <LogoutIcon sx={{color:"#4143E3"}}/>
+            </Button>
+          )}
           </div>
           {anchorEl && (
             <Menu

@@ -29,7 +29,7 @@ const SignInForm = ({ onFormChange }) => {
   return (
     <Card
       style={{
-        transform: "translateY(40%) translateX(40%)",
+        transform: "translateY(65%) translateX(40%)",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",

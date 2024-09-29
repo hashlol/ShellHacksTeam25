@@ -40,16 +40,16 @@ const ContactPage = () => {
           gap: "20px",
         }}
       >
-        <Box
+        {/* <Box
           component="img"
           src="/homepageimage3.png"
           alt="Left decorative image"
           sx={{
-            maxWidth: "300px",
+            maxWidth: "350px",
             height: "auto",
             display: { xs: "none", md: "block" },
           }}
-        />
+        /> */}
 
         {/* Contact Card */}
         <Card
@@ -58,24 +58,23 @@ const ContactPage = () => {
             flexDirection: "column",
             alignItems: "center",
             width: "100%",
-            maxWidth: "600px",
+            maxWidth: "700px",
             padding: "20px",
             borderRadius: "10px",
             backgroundColor: "#f5f5f5",
           }}
         >
           <Typography
-            variant="h4"
+            variant="h3"
             sx={{
               marginBottom: "20px",
               color: "#4042E3",
               fontWeight: "600",
-              textDecoration: "underline",
               textDecorationColor: "#4042E3",
               textDecorationThickness: "2px",
             }}
           >
-            Contact Us!
+            Contact Us
           </Typography>
 
           <TextField
@@ -132,11 +131,11 @@ const ContactPage = () => {
         {/* Right Image */}
         <Box
           component="img"
-          src="/homepageimage1.png"
+          src="/homepageimage7.png"
           alt="Right decorative image"
           sx={{
-            maxWidth: "300px",
-            height: "auto",
+            maxWidth: "700px",
+            height: "500px",
             display: { xs: "none", md: "block" },
           }}
         />
