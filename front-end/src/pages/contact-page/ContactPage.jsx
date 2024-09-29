@@ -7,7 +7,8 @@ const ContactPage = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [showAlert, setShowAlert] = useState(false);
+  const [showTrueAlert, setTrueShowAlert] = useState(false);
+  const [showFalseAlert, setFalseShowAlert] = useState(false);
 
   const handleFirstNameChange = (e) => setFirstName(e.target.value);
   const handleLastNameChange = (e) => setLastName(e.target.value);
@@ -21,9 +22,17 @@ const ContactPage = () => {
     setEmail("");
     setMessage("");
 
-    setShowAlert(true);
+    if (firstName === "" || lastName === "" || email === "" || message === "") {
+      setFalseShowAlert(true);
+      setTimeout(() => {
+        setFalseShowAlert(false);
+      }, 5000);
+      return;
+    }
+
+    setTrueShowAlert(true);
     setTimeout(() => {
-      setShowAlert(false);
+      setTrueShowAlert(false);
     }, 5000);
   };
 
@@ -118,7 +127,7 @@ const ContactPage = () => {
             sx={{ marginBottom: "20px" }}
           />
           {/* Alert shown when the form is submitted */}
-          {showAlert && (
+          {showTrueAlert && (
             <Alert
               icon={<CheckIcon fontSize="inherit" />}
               severity="success"
@@ -127,6 +136,17 @@ const ContactPage = () => {
               Your email has been sent!
             </Alert>
           )}
+
+          {showFalseAlert && (
+            <Alert
+              icon={<CheckIcon fontSize="inherit" />}
+              severity="error"
+              sx={{ width: "100%", marginBottom: "20px" }}
+            >
+              Please fill out all the forms.
+            </Alert>
+          )}
+
           <Button
             onClick={handleSubmit}
             fullWidth
