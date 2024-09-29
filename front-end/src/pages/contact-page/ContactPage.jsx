@@ -71,7 +71,7 @@ const ContactPage = () => {
             sx={{
               marginBottom: "20px",
               color: "#4042E3",
-              fontWeight: "600",
+              fontWeight: "700",
               textDecorationColor: "#4042E3",
               textDecorationThickness: "2px",
             }}

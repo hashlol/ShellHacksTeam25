@@ -32,7 +32,7 @@ const SignUpForm = ({ onFormChange }) => {
   return (
     <Card
       style={{
-        transform: "translateY(40%) translateX(40%)",
+        transform: "translateY(65%) translateX(40%)",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -47,7 +47,6 @@ const SignUpForm = ({ onFormChange }) => {
           marginTop: "10px",
           color: "#4042E3",
           fontWeight: "600",
-          textDecoration: "underline",
           textDecorationColor: "#4042E3",
           textDecorationThickness: "2px",
         }}
