@@ -40,7 +40,7 @@ const ContactPage = () => {
           gap: "20px",
         }}
       >
-        <Box
+        {/* <Box
           component="img"
           src="/homepageimage3.png"
           alt="Left decorative image"
@@ -49,7 +49,7 @@ const ContactPage = () => {
             height: "auto",
             display: { xs: "none", md: "block" },
           }}
-        />
+        /> */}
 
         {/* Contact Card */}
         <Card
@@ -58,20 +58,18 @@ const ContactPage = () => {
             flexDirection: "column",
             alignItems: "center",
             width: "100%",
-            maxWidth: "600px",
+            maxWidth: "700px",
             padding: "20px",
             borderRadius: "10px",
             backgroundColor: "#f5f5f5",
-            boxShadow:
-              "0px 4px 2px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 2px 6px 0px rgba(0,0,0,0.12)",
           }}
         >
           <Typography
-            variant="h4"
+            variant="h3"
             sx={{
               marginBottom: "20px",
               color: "#4042E3",
-              fontWeight: "700",
+              fontWeight: "600",
               textDecorationColor: "#4042E3",
               textDecorationThickness: "2px",
             }}
@@ -133,11 +131,11 @@ const ContactPage = () => {
         {/* Right Image */}
         <Box
           component="img"
-          src="/homepageimage1.png"
+          src="/homepageimage7.png"
           alt="Right decorative image"
           sx={{
-            maxWidth: "350px",
-            height: "auto",
+            maxWidth: "700px",
+            height: "500px",
             display: { xs: "none", md: "block" },
           }}
         />

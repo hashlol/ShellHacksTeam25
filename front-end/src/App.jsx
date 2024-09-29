@@ -5,7 +5,9 @@ import HomePage from "./pages/home-page/HomePage";
 import AboutPage from "./pages/about-page/AboutPage";
 import ErrorPage from "./pages/error-page/ErrorPage";
 import DummyPage from "./pages/dummy-page/DummyPage";
+import QueryPage from "./pages/query-page/QueryPage";
 import ContactPage from "./pages/contact-page/ContactPage";
+import SpacedRepitionPage from "./pages/spaced-repetition-page/SpacedRepetitionPage";
 
 function App() {
   return (
@@ -17,7 +19,9 @@ function App() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="/dummy" element={<HomePage />} />
+          <Route path="/query" element={<QueryPage />} />
+          <Route path="/spaced-repetition" element={<SpacedRepitionPage />} />
+          <Route path="/dummy" element={<DummyPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>

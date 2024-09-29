@@ -65,9 +65,9 @@ element.style {
                  0px 2px 6px 0px rgba(0, 0, 0, 0.24) !important;
 }
 
-.css-1lqd3vq-MuiPaper-root-MuiCard-root{
-  box-shadow: 0px 8px 4px -4px rgba(0,0,0,0.2), 
-  0px 4px 4px 0px rgba(0,0,0,0.14), 
-  0px 4px 12px 0px rgba(0,0,0,0.12)
-   !important;
+.css-1lqd3vq-MuiPaper-root-MuiCard-root {
+  box-shadow: 0px 0px 8px -6px rgba(0, 0, 0, 0.3), /* Increased offset and opacity */
+              0px 4px 4px 0px rgba(0, 0, 0, 0.14),
+              0px 4px 12px 0px rgba(0, 0, 0, 0.12) !important;
 }
+
