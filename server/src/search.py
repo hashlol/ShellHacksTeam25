@@ -175,12 +175,13 @@ def getMetadata(query):
 
     user_input = f"Based on the data I have just provided, please identify and extract key sections from this video transcript. For each section, provide clear, descriptive titles along with precise timestamps (start and end times). Ensure that all relevant portions of the video are covered without skipping over significant content, and structure the sections logically for ease of navigation. Return only a title and its timestamps. Also for each sections provide 3 flashcards on the most important terms and 1 multiple choice question per title with 4 choices that are derrived from the transcipt provided. Follow this json format for the output {json_string} and return only the json"
     reply = OpenAIChat.chat_with_openai(OpenAI,user_input)
-    print(reply)
-            
+    parsed_json = json.loads(reply[7:len(reply) - 3])  # Parse the JSON string
     # Step 5: Send the JSON response with transcript chunks
+    
     return jsonify({
         "videoId": video_id,
-        "json": reply
+        "json": parsed_json
     })
+    
 if __name__ == '__main__':
     app.run(debug=True)
