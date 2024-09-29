@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 import SignUpForm from "../../components/SignUpForm";
 import SignInForm from "../../components/SignInForm";
-import { Grid2, Box, Typography } from "@mui/material";
+import { Grid2, Box, Card, Button, Typography } from "@mui/material";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useGlobalState } from "../../GlobalStateContext.jsx";
+import HomePageFeatureButtons from "../../components/HomePageFeatureButtons.jsx";
 
 import "./HomePage.css";
 
 const HomePage = () => {
   const [isSignIn, setSignIn] = useState(true);
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
-  const [isSignIn2, setSignIn2] = useState(false);
   const { isToggled, setIsToggled } = useGlobalState(); // Access the global state
-
   const handleFormChange = () => {
     setSignIn((prev) => !prev); // Toggle between sign-in and sign-up forms
   };
@@ -112,12 +111,9 @@ const HomePage = () => {
               ) : (
                 <SignUpForm onFormChange={handleFormChange} />
               )}
-              {/* OAuth Sign In */}
             </div>
           ) : (
-            <div>
-              <h2>Welcome, User!</h2>
-            </div>
+            <HomePageFeatureButtons />
           )}
         </div>
       </Grid2>
