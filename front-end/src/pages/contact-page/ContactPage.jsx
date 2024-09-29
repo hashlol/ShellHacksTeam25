@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { Card, TextField, Button, Typography, Box } from "@mui/material";
+import { Card, TextField, Button, Typography, Box, Alert } from "@mui/material";
+import CheckIcon from "@mui/icons-material/Check";
 
 const ContactPage = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [showTrueAlert, setTrueShowAlert] = useState(false);
+  const [showFalseAlert, setFalseShowAlert] = useState(false);
 
   const handleFirstNameChange = (e) => setFirstName(e.target.value);
   const handleLastNameChange = (e) => setLastName(e.target.value);
@@ -18,6 +21,19 @@ const ContactPage = () => {
     setLastName("");
     setEmail("");
     setMessage("");
+
+    if (firstName === "" || lastName === "" || email === "" || message === "") {
+      setFalseShowAlert(true);
+      setTimeout(() => {
+        setFalseShowAlert(false);
+      }, 5000);
+      return;
+    }
+
+    setTrueShowAlert(true);
+    setTimeout(() => {
+      setTrueShowAlert(false);
+    }, 5000);
   };
 
   return (
@@ -110,6 +126,26 @@ const ContactPage = () => {
             fullWidth
             sx={{ marginBottom: "20px" }}
           />
+          {/* Alert shown when the form is submitted */}
+          {showTrueAlert && (
+            <Alert
+              icon={<CheckIcon fontSize="inherit" />}
+              severity="success"
+              sx={{ width: "100%", marginBottom: "20px" }}
+            >
+              Your email has been sent!
+            </Alert>
+          )}
+
+          {showFalseAlert && (
+            <Alert
+              icon={<CheckIcon fontSize="inherit" />}
+              severity="error"
+              sx={{ width: "100%", marginBottom: "20px" }}
+            >
+              Please fill out all the forms.
+            </Alert>
+          )}
 
           <Button
             onClick={handleSubmit}
@@ -127,7 +163,6 @@ const ContactPage = () => {
             Submit
           </Button>
         </Card>
-
         {/* Right Image */}
         <Box
           component="img"
