@@ -80,9 +80,9 @@ const HomePage = () => {
           <img
             src="/homepageimage5.png"
             style={{
-              maxHeight: "650px",
-              maxWidth: "750px",
-              transform: "translateX(25%)",
+              maxHeight: "725px",
+              maxWidth: "825px",
+              transform: "translateX(18%)",
             }}
           />
         </Box>
