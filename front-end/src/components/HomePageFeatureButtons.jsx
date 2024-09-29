@@ -5,11 +5,10 @@ import { useNavigate } from "react-router-dom"; // Assuming you're using react-r
 import QuizIcon from "@mui/icons-material/Quiz";
 
 const HomePageFeatureButtons = () => {
-  const navigate = useNavigate(); // React Router hook for navigation
+  const navigate = useNavigate();
 
-  // Handle navigation to specific pages
   const handleButtonClick = (path) => {
-    navigate(path); // Navigate to the given path
+    navigate(path);
   };
 
   return (
@@ -18,7 +17,7 @@ const HomePageFeatureButtons = () => {
         height: 200,
         width: 400,
         backgroundColor: "#f5f5f5",
-        transform: "translateY(200%) translateX(20%)",
+        transform: "translateY(190%) translateX(20%)",
         display: "flex",
         justifyContent: "space-around",
         alignItems: "center",

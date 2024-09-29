@@ -1,7 +1,7 @@
 import React from "react";
 
-const QueryVideoPlayer = ({ videoId, startTime }) => {
-  const videoSrc = `https://www.youtube.com/embed/${videoId}?start=${startTime}&autoplay=1`;
+const QueryVideoPlayer = ({ videoId, startTime, stopTime }) => {
+  const videoSrc = `https://www.youtube.com/embed/${videoId}?start=${startTime}&end=${stopTime}&autoplay=1`;
 
   return (
     <div>
