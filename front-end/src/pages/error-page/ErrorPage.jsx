@@ -6,17 +6,24 @@ import "./ErrorPage.css";
 const ErrorPage = () => {
   return (
     <>
-      <div className="center">
-        <div className="middle">
-          <ReportProblemIcon
-            sx={{ height: "120px", width: "300px", color: "blue" }}
-          />
-          <Typography
-            variant={"h2"}
-            style={{ color: "#FE7163", fontWeight: "bold" }}
-          >
-            404 Page Not Found
-          </Typography>
+      <div style={{ transform: "translateY(-25%)" }}>
+        <div className="center">
+          <div className="middle">
+            <img
+              src="/public/404errorimage.png"
+              style={{
+                maxHeight: 400,
+                maxWidth: 400,
+              }}
+              alt="Logo"
+            />
+            <Typography
+              variant={"h2"}
+              style={{ color: "#FE7163", fontWeight: "bold" }}
+            >
+              404 Page Not Found
+            </Typography>
+          </div>
         </div>
       </div>
     </>

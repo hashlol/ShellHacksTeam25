@@ -1,10 +1,10 @@
-import React, { useState , useEffect  } from "react";
+import React, { useState, useEffect } from "react";
 import SignUpForm from "../../components/SignUpForm";
 import SignInForm from "../../components/SignInForm";
 import { Grid2, Box, Typography } from "@mui/material";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useGlobalState } from '../../GlobalStateContext.jsx';
-    
+import { useGlobalState } from "../../GlobalStateContext.jsx";
+
 import "./HomePage.css";
 
 const HomePage = () => {
@@ -12,18 +12,16 @@ const HomePage = () => {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
   const [isSignIn2, setSignIn2] = useState(false);
   const { isToggled, setIsToggled } = useGlobalState(); // Access the global state
-  
 
   const handleFormChange = () => {
     setSignIn((prev) => !prev); // Toggle between sign-in and sign-up forms
   };
 
   useEffect(() => {
-    if(isAuthenticated){
-      setIsToggled(true)
+    if (isAuthenticated) {
+      setIsToggled(true);
     }
-}, [isAuthenticated]); 
-
+  }, [isAuthenticated]);
 
   return (
     <Grid2
@@ -32,7 +30,7 @@ const HomePage = () => {
       sx={{
         height: "100vh",
         backgroundColor: "#f5f5f5",
-        transform: "scale(0.8)",
+        transform: "scale(0.8) translateY(-20%)",
       }}
     >
       <Grid2
@@ -105,25 +103,26 @@ const HomePage = () => {
         xs={12}
         md={6}
         sx={{ transform: "scale(1.2) translateX(-10%)" }}
-      ><div>
-      {!isToggled ? (
+      >
         <div>
-          {isSignIn ? (
-            <SignInForm onFormChange={handleFormChange} />
-          ) : ( 
-            <SignUpForm onFormChange={handleFormChange} />
+          {!isToggled ? (
+            <div>
+              {isSignIn ? (
+                <SignInForm onFormChange={handleFormChange} />
+              ) : (
+                <SignUpForm onFormChange={handleFormChange} />
+              )}
+              {/* OAuth Sign In */}
+            </div>
+          ) : (
+            <div>
+              <h2>Welcome, User!</h2>
+            </div>
           )}
-          {/* OAuth Sign In */}
         </div>
-      ) : (
-        <div>
-          <h2>Welcome, User!</h2>
-        </div>
-      )}
-    </div>
-  </Grid2>
-</Grid2>
-);
+      </Grid2>
+    </Grid2>
+  );
 };
 
 export default HomePage;
