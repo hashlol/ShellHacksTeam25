@@ -7,21 +7,20 @@ import ErrorPage from "./pages/error-page/ErrorPage";
 import DummyPage from "./pages/dummy-page/DummyPage";
 import ContactPage from "./pages/contact-page/ContactPage";
 
-
 function App() {
   return (
     <>
-        <BrowserRouter>
-          <NavBar />
-          <Routes>
-            <Route index element={<HomePage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/dummy" element={<DummyPage />} />
-            <Route path="*" element={<ErrorPage />} />
-          </Routes>
-        </BrowserRouter>
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route index element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/dummy" element={<HomePage />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

@@ -11,7 +11,12 @@ const ErrorPage = () => {
           <ReportProblemIcon
             sx={{ height: "120px", width: "300px", color: "blue" }}
           />
-          <Typography variant={"h2"}>404 Page Not Found</Typography>
+          <Typography
+            variant={"h2"}
+            style={{ color: "#FE7163", fontWeight: "bold" }}
+          >
+            404 Page Not Found
+          </Typography>
         </div>
       </div>
     </>

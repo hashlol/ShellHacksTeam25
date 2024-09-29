@@ -28,6 +28,7 @@ const NavBar = () => {
     { menuTitle: "Home", pageURL: "/Home" },
     { menuTitle: "About", pageURL: "/About" },
     { menuTitle: "Contact", pageURL: "/Contact" },
+    { menuTitle: "Dummy", pageURL: "/Dummy" },
   ];
 
   return (

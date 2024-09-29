@@ -35,8 +35,8 @@ export const getMetaData = async (query) => {
 
   try {
     const response = await axios.get(url);
+    console.log(response.data.json);
     return response.data;
-    console.log(response);
   } catch (error) {
     console.error(
       `Error: ${error.response ? error.response.data.message : error.message}`

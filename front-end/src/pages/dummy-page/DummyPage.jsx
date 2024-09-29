@@ -17,17 +17,19 @@ async function getReq(query) {
   return rep;
 }
 
+const fetchData = async () => {
+  let rep = await getReq("python");
+  console.log(rep);
+};
+
 const DummyPage = () => {
-  useEffect(() => {
-    const fetchData = async () => {
-      let rep = await getReq("python");
-      console.log(rep);
-    };
-
-    fetchData(); // Call the async function
-  }, []);
-
-  return <div>Dummy Page</div>;
+  return (
+    <>
+      <div style={{ backgroundColor: "red" }}>
+        <Button onClick={() => fetchData()}>click for req</Button>
+      </div>
+    </>
+  );
 };
 
 export default DummyPage;

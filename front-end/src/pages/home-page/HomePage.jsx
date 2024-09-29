@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import SignUpForm from "../../components/SignUpForm";
 import SignInForm from "../../components/SignInForm";
-import { Grid2, Box, Typography, Paper } from "@mui/material";
-
+import { Grid2, Box, Typography } from "@mui/material";
 import "./HomePage.css";
 
 const HomePage = () => {
-  const handleButtonClick = () => {
-    console.log("submitted form");
+  const [isSignIn, setSignIn] = useState(true);
+
+  const handleFormChange = () => {
+    setSignIn((prev) => !prev); // Toggle between sign-in and sign-up forms
   };
 
   return (
@@ -58,7 +59,7 @@ const HomePage = () => {
                 transform: "translateY(30%)",
               }}
             >
-              Welcome to Learnify!
+              Ready to start your learning journey?
             </Typography>
             <Typography
               variant="h6"
@@ -76,15 +77,27 @@ const HomePage = () => {
           <img
             src="/homepageimage5.png"
             style={{
-              maxHeight: "500px",
-              maxWidth: "650px",
-              transform: "translateX(20%)",
+              maxHeight: "650px",
+              maxWidth: "750px",
+              transform: "translateX(25%)",
             }}
           />
         </Box>
       </Grid2>
-      {/* <SignUpForm onClick={handleButtonClick} /> */}
-      <SignInForm />
+
+      {/* Conditionally render SignInForm or SignUpForm */}
+      <Grid2
+        item
+        xs={12}
+        md={6}
+        sx={{ transform: "scale(1.2) translateX(-10%)" }}
+      >
+        {isSignIn ? (
+          <SignInForm onFormChange={handleFormChange} />
+        ) : (
+          <SignUpForm onFormChange={handleFormChange} />
+        )}
+      </Grid2>
     </Grid2>
   );
 };
