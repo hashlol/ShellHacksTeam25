@@ -10,20 +10,56 @@ import MailIcon from "@mui/icons-material/Mail";
 import LockIcon from "@mui/icons-material/Lock";
 import { useAuth0 } from "@auth0/auth0-react";
 import OAuthLogo from "./OAuthLogo";
+import { useGlobalState } from '../GlobalStateContext';
+
+
 
 const SignInForm = ({ onFormChange }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { loginWithRedirect } = useAuth0();
+  const { loginWithRedirect, loginWithPopup } = useAuth0();
+  const { isToggled, setIsToggled } = useGlobalState(); // Access the global state
+
 
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
 
-  const handleSubmit = () => {
-    console.log(email);
-    console.log(password);
-    setEmail("");
-    setPassword("");
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch(`https://dev-1x3dgd17gm4ixr5o.us.auth0.com/oauth/token`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          grant_type: "password",           // The grant type is 'password' for username-password login
+          username: email,                  // The user's email or username
+          password: password,               // The user's password
+          client_id: "P6CgenKb7ii7mf7p8pHVR8BjUpzOwfl2",      // Client ID of your Auth0 application
+          connection: "Username-Password-Authentication", 
+        }),
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        console.log("Attempting to set signIn2 to true");
+        setIsToggled(true)
+        console.log("Login successful!", data);
+        // Store the access token securely (e.g., in localStorage or session)
+        const accessToken = data.access_token;
+        console.log("Access Token:", accessToken);
+      } else {
+        console.error("Login failed:", data);
+        // Handle login failure (e.g., display an error message)
+      }
+    } catch (error) {
+      console.error("An error occurred during login:", error);
+    } finally {
+      // Clear fields if necessary
+      setEmail("");
+      setPassword("");
+    }
   };
 
   return (
@@ -145,7 +181,7 @@ const SignInForm = ({ onFormChange }) => {
       </Typography>
 
       <Button
-        onClick={() => loginWithRedirect()}
+        onClick={() => loginWithRedirect    ()}
         sx={{
           backgroundColor: "transparent",
           color: "#909090",

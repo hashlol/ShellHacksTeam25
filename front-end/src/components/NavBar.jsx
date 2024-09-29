@@ -8,6 +8,7 @@ import Menu from "@mui/material/Menu";
 import Button from "@mui/material/Button";
 import LogoutIcon from '@mui/icons-material/Logout';  
 import "./components.css";
+import { useGlobalState } from '../GlobalStateContext';
 
 /**
  * NavBar component renders a responsive navigation bar with menu items.
@@ -17,6 +18,8 @@ import "./components.css";
 const NavBar = () => {
   const location = useLocation();
   const [anchorEl, setAnchorEl] = useState(null);
+  const { isToggled, setIsToggled } = useGlobalState(); // Access the global state
+
 
   const { isAuthenticated, logout } = useAuth0(); // Destructure isAuthenticated and logout from Auth0
 
@@ -105,7 +108,7 @@ const NavBar = () => {
                 {menuItem.menuTitle.toLocaleUpperCase()}
               </Button>
             ))}
-            {isAuthenticated && (
+            {isToggled && (
             <Button
               onClick={handleLogout}
             >

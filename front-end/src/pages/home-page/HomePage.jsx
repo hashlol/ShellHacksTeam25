@@ -1,18 +1,29 @@
-import React, { useState } from "react";
+import React, { useState , useEffect  } from "react";
 import SignUpForm from "../../components/SignUpForm";
 import SignInForm from "../../components/SignInForm";
 import { Grid2, Box, Typography } from "@mui/material";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useGlobalState } from '../../GlobalStateContext.jsx';
     
 import "./HomePage.css";
 
 const HomePage = () => {
   const [isSignIn, setSignIn] = useState(true);
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const [isSignIn2, setSignIn2] = useState(false);
+  const { isToggled, setIsToggled } = useGlobalState(); // Access the global state
+  
 
   const handleFormChange = () => {
     setSignIn((prev) => !prev); // Toggle between sign-in and sign-up forms
   };
+
+  useEffect(() => {
+    if(isAuthenticated){
+      setIsToggled(true)
+    }
+}, [isAuthenticated]); 
+
 
   return (
     <Grid2
@@ -95,11 +106,11 @@ const HomePage = () => {
         md={6}
         sx={{ transform: "scale(1.2) translateX(-10%)" }}
       ><div>
-      {!isAuthenticated ? (
+      {!isToggled ? (
         <div>
           {isSignIn ? (
             <SignInForm onFormChange={handleFormChange} />
-          ) : (
+          ) : ( 
             <SignUpForm onFormChange={handleFormChange} />
           )}
           {/* OAuth Sign In */}
