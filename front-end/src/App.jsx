@@ -7,23 +7,42 @@ import ErrorPage from "./pages/error-page/ErrorPage";
 import QueryPage from "./pages/query-page/QueryPage";
 import ContactPage from "./pages/contact-page/ContactPage";
 import SpacedRepitionPage from "./pages/spaced-repetition-page/SpacedRepetitionPage";
+import { CSSTransition, SwitchTransition } from "react-transition-group";
+
+function AnimatedRoutes() {
+  const location = useLocation(); // Get the current location for transitions
+
+  return (
+    <SwitchTransition>
+      <CSSTransition
+        key={location.pathname}
+        classNames="page"
+        timeout={300}
+        unmountOnExit
+      >
+        <div className="page">
+          <Routes location={location}>
+            <Route index element={<HomePage />} />
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/query" element={<QueryPage />} />
+            <Route path="/spaced-repetition" element={<SpacedRepitionPage />} />
+            <Route path="/dummy" element={<DummyPage />} />
+            <Route path="*" element={<ErrorPage />} />
+          </Routes>
+        </div>
+      </CSSTransition>
+    </SwitchTransition>
+  );
+}
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <NavBar />
-        <Routes>
-          <Route index element={<HomePage />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/query" element={<QueryPage />} />
-          <Route path="/spacedRepetition" element={<SpacedRepitionPage />} />
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <NavBar />
+      <AnimatedRoutes />
+    </BrowserRouter>
   );
 }
 
