@@ -6,9 +6,10 @@ import Toolbar from "@mui/material/Toolbar";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import Button from "@mui/material/Button";
-import LogoutIcon from '@mui/icons-material/Logout';  
+import LogoutIcon from "@mui/icons-material/Logout";
 import "./components.css";
-import { useGlobalState } from '../GlobalStateContext';
+import { useGlobalState } from "../GlobalStateContext";
+import LanguageDropdown from "./LanguageDropdown";
 
 /**
  * NavBar component renders a responsive navigation bar with menu items.
@@ -19,9 +20,9 @@ const NavBar = () => {
   const location = useLocation();
   const [anchorEl, setAnchorEl] = useState(null);
   const { isToggled, setIsToggled } = useGlobalState(); // Access the global state
-
-
-  const { isAuthenticated, logout } = useAuth0(); // Destructure isAuthenticated and logout from Auth0
+  const { isAuthenticated, logout } = useAuth0();
+  const { langCode, setLangCode } = useGlobalState();
+  // Destructure isAuthenticated and logout from Auth0
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -109,12 +110,12 @@ const NavBar = () => {
               </Button>
             ))}
             {isToggled && (
-            <Button
-              onClick={handleLogout}
-            >
-              <LogoutIcon sx={{color:"#4143E3"}}/>
-            </Button>
-          )}
+              <>
+                <Button onClick={handleLogout}>
+                  <LogoutIcon sx={{ color: "#4143E3" }} />
+                </Button>
+              </>
+            )}
           </div>
           {anchorEl && (
             <Menu
