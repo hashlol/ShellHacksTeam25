@@ -8,6 +8,7 @@ import QueryPage from "./pages/query-page/QueryPage";
 import ContactPage from "./pages/contact-page/ContactPage";
 import SpacedRepitionPage from "./pages/spaced-repetition-page/SpacedRepetitionPage";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
+import { useLocation } from "react-router-dom";
 
 function AnimatedRoutes() {
   const location = useLocation(); // Get the current location for transitions
@@ -28,7 +29,6 @@ function AnimatedRoutes() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/query" element={<QueryPage />} />
             <Route path="/spaced-repetition" element={<SpacedRepitionPage />} />
-            <Route path="/dummy" element={<DummyPage />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </div>
