@@ -16,9 +16,9 @@ function AnimatedRoutes() {
   return (
     <SwitchTransition>
       <CSSTransition
-        key={location.pathname} // Transition key based on route path
-        classNames="page" // Use the classNames "page" to match your CSS
-        timeout={300} // Timeout matching your CSS transition
+        key={location.pathname} 
+        classNames="page" 
+        timeout={300} 
         unmountOnExit
       >
         <div className="page">
@@ -41,8 +41,8 @@ function AnimatedRoutes() {
 function App() {
   return (
     <BrowserRouter>
-      <NavBar /> {/* Keep the NavBar outside of animations */}
-      <AnimatedRoutes /> {/* Routes with animation */}
+      <NavBar /> 
+      <AnimatedRoutes />
     </BrowserRouter>
   );
 }
